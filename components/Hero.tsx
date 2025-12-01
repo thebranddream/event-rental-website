@@ -5,10 +5,7 @@ import Button from "./ui/Button"
 import { buildWhatsAppLink } from "@/lib/whatsapp"
 
 export default function Hero() {
-  const whatsappLink = buildWhatsAppLink(
-    "{{PHONE}}",
-    "Hi Event Buddy! I'd like to book premium décor for my celebration.",
-  )
+  const whatsappLink = buildWhatsAppLink(undefined, "Hi Event Buddy! I'd like to book premium décor for my celebration.")
 
   return (
     <section
@@ -27,12 +24,12 @@ export default function Hero() {
           className="absolute inset-0 w-full h-full object-cover"
           aria-hidden="true"
         >
-          <source src="/videos/hero-loop.mp4" type="video/mp4" />
+          <source src="/bg.mp4" type="video/mp4" />
         </video>
 
         {/* Fallback Image */}
         <Image
-          src="/images/hero-poster.jpg"
+          src="https://5.imimg.com/data5/IJ/UG/XS/GLADMIN-23729547/tent-house-decoration.jpg"
           alt=""
           fill
           className="object-cover"

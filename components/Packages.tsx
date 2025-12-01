@@ -58,7 +58,7 @@ export default function Packages() {
 
               <Button
                 as="a"
-                href={buildWhatsAppLink("{{PHONE}}", `Hi! I'm interested in your ${pkg.name} package (${pkg.price}).`)}
+                href={buildWhatsAppLink(undefined, `Hi! I'm interested in your ${pkg.name} package (${pkg.price}).`)}
                 target="_blank"
                 rel="noopener noreferrer"
                 variant={pkg.featured ? "secondary" : "primary"}

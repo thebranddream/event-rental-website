@@ -33,7 +33,7 @@ export async function createCheckoutSession(params: {
     cancel_url: params.cancelUrl,
     metadata: {
       plan: params.plan,
-      businessName: "{{BUSINESS_NAME}}",
+      businessName: process.env.NEXT_PUBLIC_BUSINESS_NAME || "{{BUSINESS_NAME}}",
     },
   }
 

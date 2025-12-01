@@ -12,19 +12,19 @@ export const metadata: Metadata = {
   title: "Event Buddy - Premium Event Rentals & Luxury Décor | Wedding & Corporate",
   description:
     "Premium event rentals, mandaps, luxury décor, wedding setups, and corporate event styling. Trusted Indian celebration experts.",
-  metadataBase: new URL("https://{{WEBSITE_URL}}"),
+  metadataBase: new URL(`https://${process.env.NEXT_PUBLIC_WEBSITE_URL || "{{WEBSITE_URL}}"}`),
   alternates: {
-    canonical: "https://{{WEBSITE_URL}}",
+    canonical: `https://${process.env.NEXT_PUBLIC_WEBSITE_URL || "{{WEBSITE_URL}}"}`,
   },
   generator: "v0.app",
   openGraph: {
     title: "Event Buddy - Premium Event Rentals & Luxury Décor",
-    description: "Luxury wedding décor, mandaps, furniture, and event rentals in {{CITY}}.",
-    url: "https://{{WEBSITE_URL}}",
+    description: `Luxury wedding décor, mandaps, furniture, and event rentals in ${process.env.NEXT_PUBLIC_CITY || "{{CITY}}"}.`,
+    url: `https://${process.env.NEXT_PUBLIC_WEBSITE_URL || "{{WEBSITE_URL}}"}`,
     siteName: "Event Buddy",
     images: [
       {
-        url: "https://{{WEBSITE_URL}}/images/hero-poster.jpg",
+        url: `https://${process.env.NEXT_PUBLIC_WEBSITE_URL || "{{WEBSITE_URL}}"}/images/hero-poster.jpg`,
         width: 1200,
         height: 630,
         alt: "Event Buddy Premium Event Setup",
@@ -36,7 +36,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Event Buddy - Premium Event Rentals",
     description: "Luxury décor & trusted event setups for celebrations.",
-    images: ["https://{{WEBSITE_URL}}/images/hero-poster.jpg"],
+    images: [`https://${process.env.NEXT_PUBLIC_WEBSITE_URL || "{{WEBSITE_URL}}"}/images/hero-poster.jpg`],
   },
   icons: {
     icon: [
@@ -80,23 +80,23 @@ export default function RootLayout({
               "@context": "https://schema.org",
               "@type": "LocalBusiness",
               name: "Event Buddy",
-              image: "https://{{WEBSITE_URL}}/images/hero-poster.jpg",
+              image: `https://${process.env.NEXT_PUBLIC_WEBSITE_URL || "{{WEBSITE_URL}}"}/images/hero-poster.jpg`,
               description: "Premium event rentals, mandaps, luxury décor, wedding setups, and corporate event styling.",
-              telephone: "{{PHONE}}",
+              telephone: process.env.NEXT_PUBLIC_PHONE || "{{PHONE}}",
               url: "https://{{WEBSITE_URL}}",
               address: {
                 "@type": "PostalAddress",
-                streetAddress: "{{ADDRESS}}",
-                addressLocality: "{{CITY}}",
+                streetAddress: process.env.NEXT_PUBLIC_ADDRESS || "{{ADDRESS}}",
+                addressLocality: process.env.NEXT_PUBLIC_CITY || "{{CITY}}",
                 addressCountry: "IN",
               },
               areaServed: {
                 "@type": "City",
-                name: "{{CITY}}",
+                name: process.env.NEXT_PUBLIC_CITY || "{{CITY}}",
               },
               serviceArea: {
                 "@type": "City",
-                name: "{{CITY}}",
+                name: process.env.NEXT_PUBLIC_CITY || "{{CITY}}",
               },
               priceRange: "₹₹",
               aggregateRating: {

@@ -22,6 +22,15 @@ Find & replace in all files (use your editor's global find-replace):
 # Install: npm install --save-dev replace
 npx replace-in-files --string="{{PHONE}}" --replacement="+918888888888" "app/**/*.tsx" "components/**/*.tsx" "lib/**/*.ts"
 \`\`\`
+```bash
+# With pnpm (recommended for CI parity):
+pnpm add -D replace
+npx replace-in-files --string="{{PHONE}}" --replacement="+918888888888" "app/**/*.tsx" "components/**/*.tsx" "lib/**/*.ts"
+
+# With npm:
+npm install --save-dev replace
+npx replace-in-files --string="{{PHONE}}" --replacement="+918888888888" "app/**/*.tsx" "components/**/*.tsx" "lib/**/*.ts"
+```
 
 ## 2. Upload Hero Media ✅
 

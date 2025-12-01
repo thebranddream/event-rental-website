@@ -2,6 +2,7 @@
 
 import { useState } from "react"
 import Link from "next/link"
+import { buildWhatsAppLink } from "@/lib/whatsapp"
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
@@ -39,7 +40,7 @@ export default function Navbar() {
 
           <div className="flex items-center gap-4">
             <a
-              href="https://wa.me/{{PHONE}}?text=Hi%20Event%20Buddy%2C%20I%27m%20interested%20in%20booking%20premium%20event%20rentals%21"
+              href={buildWhatsAppLink(undefined, "Hi Event Buddy, I'm interested in booking premium event rentals!")}
               target="_blank"
               rel="noopener noreferrer"
               className="hidden sm:inline-flex px-4 py-2 bg-royal-gold text-charcoal font-semibold rounded-lg hover:bg-maroon-royale hover:text-white transition-all duration-200"
@@ -80,7 +81,7 @@ export default function Navbar() {
                 </a>
               ))}
               <a
-                href="https://wa.me/{{PHONE}}?text=Hi%20Event%20Buddy%2C%20I%27m%20interested%20in%20booking%20premium%20event%20rentals%21"
+                href={buildWhatsAppLink(undefined, "Hi Event Buddy, I'm interested in booking premium event rentals!")}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="block w-full mt-3 px-4 py-2 bg-royal-gold text-charcoal font-semibold rounded-lg text-center hover:bg-maroon-royale hover:text-white transition-all"

@@ -8,7 +8,7 @@ const nextConfig = {
     formats: ["image/avif", "image/webp"],
   },
   compress: true,
-  swcMinify: true,
+  // `swcMinify` is not a recognized option in newer Next.js versions; default minification behavior is used.
 }
 
 module.exports = nextConfig

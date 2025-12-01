@@ -1,4 +1,5 @@
 export default function WhyUs() {
+  const city = process.env.NEXT_PUBLIC_CITY || "{{CITY}}"
   const reasons = [
     {
       icon: "⚡",
@@ -13,7 +14,7 @@ export default function WhyUs() {
     {
       icon: "👥",
       title: "Local & Trusted",
-      desc: "We know {{CITY}}. 4.8★ from 145+ families.",
+      desc: `We know ${city}. 4.8★ from 145+ families.`,
     },
     {
       icon: "💰",

@@ -2,9 +2,12 @@
  * Build encoded WhatsApp links and messages for CTAs
  */
 
-export function buildWhatsAppLink(phoneNumber: string, message: string): string {
+export function buildWhatsAppLink(phoneNumber: string | undefined, message: string): string {
+  const envPhone = typeof process !== "undefined" ? process.env.NEXT_PUBLIC_PHONE : undefined
+  const rawPhone = phoneNumber && phoneNumber !== "{{PHONE}}" ? phoneNumber : envPhone || "{{PHONE}}"
+  const cleaned = rawPhone.replace(/\D/g, "")
   const encoded = encodeURIComponent(message)
-  return `https://wa.me/${phoneNumber.replace(/\D/g, "")}?text=${encoded}`
+  return `https://wa.me/${cleaned}?text=${encoded}`
 }
 
 export const whatsAppTemplates = {
