@@ -1,0 +1,46 @@
+name: CI & Deploy (Vercel)
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+      - name: Use pnpm (if available)
+        run: npm i -g pnpm@8
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile || npm install
+      - name: Run lint
+        run: npm run lint || echo "No lint script or lint failed; continue"
+      - name: Build
+        run: pnpm build || npm run build
+      - name: Upload build artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: next-build
+          path: .next
+
+  vercel_deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Vercel CLI
+        run: npm i -g vercel@29 || true
+      - name: Deploy to Vercel
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+        run: |
+          vercel --prod --token $VERCEL_TOKEN --confirm

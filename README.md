@@ -1,6 +1,6 @@
 # Event Rentals Landing Site
 
-A mobile-first, single-page landing site for an Indian event-rentals business built with Next.js 16 (App Router), TypeScript, and Tailwind CSS v4.
+A mobile-first, single-page landing site for an Indian event-rentals business built with Next.js 16 (App Router), TypeScript, and Tailwind CSS v3.
 
 ## Features
 
@@ -16,10 +16,17 @@ A mobile-first, single-page landing site for an Indian event-rentals business bu
 ## Quick Start
 
 \`\`\`bash
-# Install dependencies
+# Install dependencies (recommended: pnpm if you use it locally)
+# With pnpm
+pnpm install
+
+# With npm
 npm install
 
 # Run dev server
+# With pnpm
+pnpm dev
+# With npm
 npm run dev
 
 # Open http://localhost:3000
@@ -48,10 +55,13 @@ Before deploying, replace these placeholders:
 ## Build & Deploy
 
 \`\`\`bash
-# Build for production
-npm run build
+# Build for production (choose your package manager)
+# With pnpm
+pnpm build
+pnpm start
 
-# Start production server
+# With npm
+npm run build
 npm start
 \`\`\`
 
@@ -61,6 +71,8 @@ npm start
 npm install -g vercel
 vercel
 \`\`\`
+
+> Tip: For automated CI-enabled deploys, use GitHub Actions and the Vercel deployment action. See `.github/workflows/ci-deploy.yml` for an example and remember to add `VERCEL_TOKEN` as a repository secret.
 
 ### Deploy to Netlify
 
@@ -156,6 +168,12 @@ See `app/globals.css` for implementation details.
 ## Support
 
 For issues, optimizations, or customization help, refer to the inline code comments or the Next.js documentation: https://nextjs.org/docs
+
+## Fixes & Notes
+
+- Removed `@import "tw-animate-css"` from `app/globals.css` (it caused a build-time error with PostCSS/Turbopack); the project uses `tailwindcss-animate` plugin, which is included in `tailwind.config.js`.
+- If you'd like to add `tw-animate-css` back for animate.css compatibility, import it from `tw-animate-css/dist/tw-animate.css` at the top of `app/globals.css`.
+- Use `pnpm install` if you prefer pnpm, or `npm install` otherwise. CI uses `pnpm` when available.
 
 ---
 
